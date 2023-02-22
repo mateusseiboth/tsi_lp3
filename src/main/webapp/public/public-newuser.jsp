@@ -17,7 +17,7 @@
 		</div>
 		<div class="row">
 			<div class="mx-auto col-10 col-md-8 col-lg-6">
-				<form class="row g-3" method="POST">
+				<form class="row g-2" method="POST">
 					<div class="col-md-8">
 						<label for="email" class="form-label">Email</label> <input
 							type="email" class="form-control" id="email">
@@ -43,7 +43,7 @@
 					<div class="col-12">
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox" id="gridCheck" required>
-							<a href="#"><label class="form-check-label" for="gridCheck"> Aceito os termos de uso </label></a>
+							<a href="#" target="_blank"><label class="form-check-label"> Aceito os termos de uso </label></a>
 						</div>
 					</div>
 					<div class="col-12">
