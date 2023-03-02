@@ -1,6 +1,7 @@
 package br.edu.ifms.controlendexControle;
 
 import java.io.IOException;
+import java.sql.Connection;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import br.edu.ifms.dao.util.Conexao;
 
 /**
  * Servlet implementation class IndexControle
@@ -58,6 +61,14 @@ public class IndexControle extends HttpServlet {
 	
 	private void novoUsuario(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		Connection x = Conexao.getConexao();
+		
+		if(x != null) {
+			System.out.println("Conexão aberta");
+		} else 
+			System.out.println("Conexão não aberta");
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("public/public-newuser.jsp");
 		dispatcher.forward(request, response);
 	}
