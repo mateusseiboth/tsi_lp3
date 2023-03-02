@@ -62,13 +62,14 @@ public class IndexControle extends HttpServlet {
 	private void novoUsuario(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		/*
 		Connection x = Conexao.getConexao();
 		
 		if(x != null) {
 			System.out.println("Conexão aberta");
 		} else 
 			System.out.println("Conexão não aberta");
-		
+		*/
 		RequestDispatcher dispatcher = request.getRequestDispatcher("public/public-newuser.jsp");
 		dispatcher.forward(request, response);
 	}

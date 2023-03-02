@@ -10,51 +10,63 @@
 
 	<jsp:include page="../component/navbar.jsp" />
 
-	<div class="container-fluid text-white">
-		<div class="text-left">
-			<h1 class="display-4">Novo usuário</h1>
-			<hr class="my-4">
-		</div>
+	<div class="container text-white">
+		<div class="row">
+			<div class="col">
+				<h2>Cadastro usuário</h2>
+				<form
+					action="${pageContext.request.contextPath}/publica?acao=inserir"
+					method="post">
 
-		<div class="mx-auto col-10 col-md-8 col-lg-6">
-			<form class="row g-2" method="POST">
-				<div class="col-md-8">
-					<label for="email" class="form-label">Email</label> <input
-						type="email" class="form-control" id="email">
-				</div>
-				<div class="col-md-8">
-					<label for="password" class="form-label">Senha</label> <input
-						type="password" class="form-control" id="password">
-				</div>
-				<div class="col-12">
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="tipo"
-							id="flexRadioDefault1" value="1"> <label
-							class="form-check-label" for="flexRadioDefault1">
-							Administrador </label>
+					<div class="row mb-3">
+						<label class="col-sm-1 col-form-label">Nome</label>
+						<div class="col-sm-5">
+							<input class="form-control" type="text" name="nome">
+						</div>
 					</div>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="tipo"
-							id="flexRadioDefault2" checked> <label
-							class="form-check-label" for="flexRadioDefault2" value="0">
-							Comum </label>
-					</div>
-				</div>
-				<div class="col-12">
-					<div class="form-check">
-						<input class="form-check-input" type="checkbox" id="gridCheck"
-							required> <a href="#" target="_blank"><label
-							class="form-check-label"> Aceito os termos de uso </label></a>
-					</div>
-				</div>
-				<div class="col-12">
-					<button type="submit" class="btn btn-primary">Cadastrar</button>
-				</div>
-			</form>
 
+					<div class="row mb-3">
+						<label class="col-sm-1 col-form-label">CPF</label>
+						<div class="col-sm-3">
+							<input class="form-control" type="text" name="cpf">
+						</div>
+					</div>
+
+
+					<div class="row mb-3">
+						<label class="col-sm-1 col-form-label">Nascimento</label>
+						<div class="col-sm-2">
+							<input class="form-control" type="text" name="nascimento">
+						</div>
+					</div>
+
+
+					<div class="row mb-3">
+						<label class="col-sm-1 col-form-label">Email</label>
+						<div class="col-sm-2">
+							<input class="form-control" type="text" name="email">
+						</div>
+					</div>
+
+					<div class="row mb-3">
+						<label class="col-sm-1 col-form-label">Login</label>
+						<div class="col-sm-2">
+							<input class="form-control" type="text" name="login">
+						</div>
+					</div>
+
+					<div class="row mb-3">
+						<label class="col-sm-1 col-form-label">Senha</label>
+						<div class="col-sm-2">
+							<input class="form-control" type="password" name="password">
+						</div>
+					</div>
+
+					<input class="btn btn-primary" type="submit" value="Gravar" />
+				</form>
+			</div>
 		</div>
 	</div>
-
 	<jsp:include page="../component/footer.jsp" />
 </body>
 </html>
