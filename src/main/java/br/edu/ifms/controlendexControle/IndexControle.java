@@ -50,28 +50,37 @@ public class IndexControle extends HttpServlet {
 			case "novo":
 				novoUsuario(request, response);
 				break;
+			case "insert":
+				insertUser(request, response);
+				break;
 			case "home":
 				homeCall(request, response);
 			}
 		} catch (Exception ex) {
 			throw new ServletException(ex);
 		}
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+//		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 	
 	private void novoUsuario(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		/*
-		Connection x = Conexao.getConexao();
-		
-		if(x != null) {
-			System.out.println("Conexão aberta");
-		} else 
-			System.out.println("Conexão não aberta");
-		*/
 		RequestDispatcher dispatcher = request.getRequestDispatcher("public/public-newuser.jsp");
 		dispatcher.forward(request, response);
+	}
+	
+	private void insertUser(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String name = request.getParameter("nome");
+		String cpf = request.getParameter("cpf");
+		String nasc = request.getParameter("nascimento");
+		String login = request.getParameter("login");
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		
+		
+		System.out.println(name + "," + cpf + "," + nasc + "," + login + "," + email + "," + password);
+		
 	}
 	
 	private void homeCall(HttpServletRequest request, HttpServletResponse response)

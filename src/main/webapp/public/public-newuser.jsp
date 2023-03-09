@@ -15,7 +15,7 @@
 			<div class="col">
 				<h2>Cadastro usuário</h2>
 				<form
-					action="${pageContext.request.contextPath}/publica?acao=inserir"
+					action="${pageContext.request.contextPath}/public?acao=insert"
 					method="post">
 
 					<div class="row mb-3">
