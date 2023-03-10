@@ -94,7 +94,7 @@ public class IndexControle extends HttpServlet {
 		// String nome, String cpf, Date dataNasc, String email, String password, String
 		// login, boolean active
 
-		//System.out.println(name + "," + cpf + "," + nasc + "," + login + "," + email + "," + password);
+		System.out.println(name + "," + cpf + "," + nasc + "," + login + "," + email + "," + password);
 
 	}
 
