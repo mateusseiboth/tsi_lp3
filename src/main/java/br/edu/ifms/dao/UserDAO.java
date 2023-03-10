@@ -33,7 +33,6 @@ public class UserDAO {
 					+ " VALUES (?, ?, ?, ?, ?, ?, ?)";		    
 			
 			connect();
-
 			PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			statement.setString(1, user.getNome());
 			statement.setString(2, user.getCpf());
