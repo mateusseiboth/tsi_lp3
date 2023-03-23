@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,8 +16,16 @@
 		<div class="row">
 			<div class="col">
 				<h2>Cadastro usuário</h2>
-				<form
-					action="${pageContext.request.contextPath}/public?acao=insert"
+
+				<c:if test="${message != null}">
+					<div class="alert alert-success alert-dismissible fade show"
+						role="alert">
+						<span><c:out value="${message}" /></span>	
+					</div>
+
+				</c:if>
+
+				<form action="${pageContext.request.contextPath}/public?acao=insert"
 					method="post">
 
 					<div class="row mb-3">
