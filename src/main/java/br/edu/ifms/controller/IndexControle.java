@@ -1,7 +1,9 @@
 package br.edu.ifms.controller;
 
 import java.io.IOException;
+
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.edu.ifms.controller.util.DataModelling;
+import br.edu.ifms.dao.UserDAO;
 import br.edu.ifms.dao.util.Connect;
 import br.edu.ifms.model.User;
 
@@ -21,13 +24,19 @@ import br.edu.ifms.model.User;
 @WebServlet("/public")
 public class IndexControle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	private UserDAO userDAO;
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public IndexControle() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	
+	@Override
+	public void init(){
+		// TODO Auto-generated method stub
+		userDAO = new UserDAO();
 	}
 
 	/**
@@ -78,7 +87,7 @@ public class IndexControle extends HttpServlet {
 	}
 
 	private void insertUser(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws ServletException, IOException, SQLException {
 		String name = request.getParameter("nome");
 		String cpf = request.getParameter("cpf");
 		String nasc = request.getParameter("nascimento");
@@ -90,11 +99,16 @@ public class IndexControle extends HttpServlet {
 		Date new_data = dataMan.converterStringData(nasc);
 
 		User user = new User(name, cpf, new_data, email, password, login, true);
-
+		
+		User finalUser = userDAO.insertUser(user);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("public/public-newuser.jsp");
+		request.setAttribute("message", "Usuário cadastrado com sucesso");
+		dispatcher.forward(request, response);	
 		// String nome, String cpf, Date dataNasc, String email, String password, String
 		// login, boolean active
 
-		System.out.println(name + "," + cpf + "," + nasc + "," + login + "," + email + "," + password);
+//		System.out.println(name + "," + cpf + "," + nasc + "," + login + "," + email + "," + password);
 
 	}
 
