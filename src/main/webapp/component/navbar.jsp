@@ -27,10 +27,10 @@
 			<ul class="navbar-nav">
 				<li class="nav-item"><a class="nav-link active"
 					aria-current="page" href="#">Solicitações</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Acervo</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Solicitações</a>
+				<li class="nav-item"><a class="nav-link active" href="#">Acervo</a></li>
+				<li class="nav-item"><a class="nav-link active" href="#">Solicitações</a>
 				</li>
-				<li class="nav-item"><a class="nav-link"
+				<li class="nav-item"><a class="nav-link active"
 					href="${pageContext.request.contextPath}/public?acao=novo">Users</a></li>
 			</ul>
 		</div>

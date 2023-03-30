@@ -14,7 +14,8 @@
 			<p class="lead">Esse site definitavamente foi feito com NodeJS e ReactJS.</p>
 			<hr class="my-4">
 			<p>Apenas confie</p>
-			<a class="btn btn-primary btn-lg" href="#" role="button">Esse é só um botão</a>
+			<button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#meu-modal">Esse é só um botão</button>
+			<jsp:include page="/component/modal.jsp"/>	
 		</div>
 	</div>
 
@@ -37,5 +38,6 @@
 	</div>
 	
 	<jsp:include page="/component/footer.jsp"/>
+
 </body>
 </html>
