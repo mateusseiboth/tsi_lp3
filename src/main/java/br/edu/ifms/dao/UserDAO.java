@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.edu.ifms.model.*;
 import br.edu.ifms.dao.util.Connect;
@@ -55,6 +57,37 @@ public class UserDAO {
 			
 			user.setId(id);
 			return user;
+		}
+		
+		public List<User> listUsers() throws SQLException {
+			
+			List<User> userList = new ArrayList<User>();
+			String query = "select * from usuario";
+			
+			connect();
+			
+			Statement statement = connection.createStatement();
+			ResultSet result = statement.executeQuery(query);
+			
+			while(result.next()) {
+				long id = result.getLong("id");
+				String name = result.getString("nome");
+				String cpf = result.getString("cpf");
+				Date birthday = new Date(result.getDate("data_nascimento").getTime());
+				String email = result.getString("email");
+				String login = result.getString("login");
+				String password = result.getString("password");
+				boolean active = result.getBoolean("ativo");
+				
+				User user = new User(name, cpf, birthday, email, password, login, active);
+				user.setId(id);
+				userList.add(user);
+			}
+			result.close();
+			disconnect();
+			
+			
+			return userList;
 		}
 
 

@@ -31,7 +31,9 @@
 				<li class="nav-item"><a class="nav-link active" href="#">Solicitações</a>
 				</li>
 				<li class="nav-item"><a class="nav-link active"
-					href="${pageContext.request.contextPath}/public?acao=novo">Users</a></li>
+					href="${pageContext.request.contextPath}/public?acao=novo">New user</a></li>
+					<li class="nav-item"><a class="nav-link active"
+					href="${pageContext.request.contextPath}/public?acao=listar">List users</a></li>
 			</ul>
 		</div>
 

@@ -72,7 +72,10 @@ public class IndexControle extends HttpServlet {
 				break;
 			case "home":
 				homeCall(request, response);
+			case "listUser":
+				listUser(request, response);
 			}
+			
 		} catch (Exception ex) {
 			throw new ServletException(ex);
 		}
@@ -105,11 +108,12 @@ public class IndexControle extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("public/public-newuser.jsp");
 		request.setAttribute("message", "Usuário cadastrado com sucesso");
 		dispatcher.forward(request, response);	
-		// String nome, String cpf, Date dataNasc, String email, String password, String
-		// login, boolean active
 
-		//System.out.println(name + "," + cpf + "," + nasc + "," + login + "," + email + "," + password);
-
+	}
+	
+	private void listUser(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException{
+		
 	}
 
 	private void homeCall(HttpServletRequest request, HttpServletResponse response)
@@ -117,5 +121,6 @@ public class IndexControle extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 		dispatcher.forward(request, response);
 	}
+	
 
 }
