@@ -72,8 +72,6 @@ public class IndexControle extends HttpServlet {
 				break;
 			case "home":
 				homeCall(request, response);
-			case "listUser":
-				listUser(request, response);
 			}
 			
 		} catch (Exception ex) {
@@ -111,10 +109,6 @@ public class IndexControle extends HttpServlet {
 
 	}
 	
-	private void listUser(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException{
-		
-	}
 
 	private void homeCall(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

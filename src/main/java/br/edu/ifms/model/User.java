@@ -5,7 +5,7 @@ import java.util.Date;
 public class User {
 
 	private Long id;
-	private String nome;
+	private String name;
 	private String cpf;
 	private Date dataNasc;
 	private String email;
@@ -17,9 +17,9 @@ public class User {
 		super();
 	}
 
-	public User(String nome, String cpf, Date dataNasc, String email, String password, String login, boolean active) {
+	public User(String name, String cpf, Date dataNasc, String email, String password, String login, boolean active) {
 		super();
-		this.nome = nome;
+		this.name = name;
 		this.cpf = cpf;
 		this.dataNasc = dataNasc;
 		this.email = email;
@@ -36,12 +36,12 @@ public class User {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getCpf() {
