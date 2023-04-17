@@ -2,8 +2,6 @@
 	pageEncoding="UTF-8"%>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-	
-
 <head>
 <meta charset="UTF-8">
 <title>Bibliocraft</title>
@@ -29,14 +27,12 @@
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
 				<li class="nav-item"><a class="nav-link active"
-					aria-current="page" href="#">Solicitações</a></li>
-				<li class="nav-item"><a class="nav-link active" href="#">Acervo</a></li>
-				<li class="nav-item"><a class="nav-link active" href="#">Solicitações</a>
-				</li>
+					aria-current="page" href="#"><fmt:message key="component-nav.solicita"/></a></li>
+				<li class="nav-item"><a class="nav-link active" href="#"><fmt:message key="component-nav.acervo"/></a></li>
 				<li class="nav-item"><a class="nav-link active"
-					href="${pageContext.request.contextPath}/public?acao=novo">New user</a></li>
+					href="${pageContext.request.contextPath}/public?acao=novo"><fmt:message key="component-nav.new"/></a></li>
 					<li class="nav-item"><a class="nav-link active"
-					href="${pageContext.request.contextPath}/auth/admin?acao=listar">List users</a></li>
+					href="${pageContext.request.contextPath}/auth/admin?acao=listar"><fmt:message key="component-nav.list"/></a></li>
 			</ul>
 		</div>
 
