@@ -44,7 +44,10 @@
 				</a>
 				
 					<a class="nav-link" href="${pageContext.request.contextPath}/I18nController?language=pt_BR">
-						<fmt:message key="publica-nav.portugues" />
+						<fmt:message key="component-nav.portugues" />
+					</a>
+					<a class="nav-link" href="${pageContext.request.contextPath}/I18nController?language=en_US">
+						<fmt:message key="component-nav.english" />
 					</a>
 				
 			</div>
