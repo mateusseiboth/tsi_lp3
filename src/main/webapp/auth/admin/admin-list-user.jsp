@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +15,7 @@
 	<div class="container text-white">
 		<div class="row">
 			<div class="col">
-				<h2>Listagem de usuários</h2>
+				<h2><fmt:message key="admin-list-usuario.lista"/></h2>
 			</div>
 		</div>
 		<div class="row">
@@ -43,9 +44,9 @@
 								data-bs-toggle='modal' data-bs-target='#myModal'
 								data-id='{$cliente[' id']}' data-nome='{$cliente['
 								nome']}' data-cpf='{$cliente['
-								cpf']}' data-telefone='{$cliente['telefone']}''>Editar
+								cpf']}' data-telefone='{$cliente['telefone']}''><fmt:message key="admin-list-usuario.botaoeditar"/>
 							</button>
-							<a href='$pathExcluir/{$cliente[' id']}' class='btn btn-danger'>Excluir</a>
+							<a href='$pathExcluir/{$cliente[' id']}' class='btn btn-danger'><fmt:message key="admin-list-usuario.botaoapagar"/></a>
 						</div>
 					</div>
 				</div>
