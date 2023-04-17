@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
+	
 
 <head>
 <meta charset="UTF-8">
@@ -43,6 +46,11 @@
 
 				<a class="link-dark me-3" href="#"> <i class="bi bi-bookshelf"></i>
 				</a>
+				
+					<a class="nav-link" href="${pageContext.request.contextPath}/I18nController?language=pt_BR">
+						<fmt:message key="publica-nav.portugues" />
+					</a>
+				
 			</div>
 			<div class="d-flex" style="margin-right: 15px">
 				<!-- Notifications -->
@@ -77,6 +85,7 @@
 					</ul>
 				</div>
 				<!-- Notifications -->
+				
 
 				<!-- Avatar -->
 				<div class="dropdown">

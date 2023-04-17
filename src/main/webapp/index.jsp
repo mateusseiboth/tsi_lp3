@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <body class="bg-dark">
 
@@ -10,8 +10,8 @@
 
 	<div class="container-fluid jumbotron text-white">
 		<div class="text-center">
-			<h1 class="display-4">Bem-Vindo ao BiblioCraft</h1>
-			<p class="lead">Esse site definitavamente foi feito com NodeJS e ReactJS.</p>
+			<h1 class="display-4"><fmt:message key="index-titulo.principal" /></h1>
+			<p class="lead"><fmt:message key="index-titulo.abaixo" /></p>
 			<hr class="my-4">
 			<p>Apenas confie</p>
 			<button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#meu-modal">Esse é só um botão</button>
