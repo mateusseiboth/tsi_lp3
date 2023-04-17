@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,14 +22,14 @@ import br.edu.ifms.model.User;
 /**
  * Servlet implementation class IndexControle
  */
-@WebServlet("/public")
-public class IndexControle extends HttpServlet {
+@WebServlet("/auth/admin")
+public class AdminController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserDAO userDAO;
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public IndexControle() {
+	public AdminController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -64,14 +65,10 @@ public class IndexControle extends HttpServlet {
 		String acao = request.getParameter("acao");
 		try {
 			switch (acao) {
-			case "novo":
-				novoUsuario(request, response);
+			case "listar":
+				listUser(request, response);
 				break;
-			case "insert":
-				insertUser(request, response);
-				break;
-			case "home":
-				homeCall(request, response);
+	
 			}
 			
 		} catch (Exception ex) {
@@ -79,41 +76,16 @@ public class IndexControle extends HttpServlet {
 		}
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
-
-	private void novoUsuario(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("public/public-newuser.jsp");
-		dispatcher.forward(request, response);
-	}
-
-	private void insertUser(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException, SQLException {
-		String name = request.getParameter("nome");
-		String cpf = request.getParameter("cpf");
-		String nasc = request.getParameter("nascimento");
-		String login = request.getParameter("login");
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-
-		DataModelling dataMan = new DataModelling();
-		Date new_data = dataMan.converterStringData(nasc);
-
-		User user = new User(name, cpf, new_data, email, password, login, true);
-		
-		User finalUser = userDAO.insertUser(user);
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("public/public-newuser.jsp");
-		request.setAttribute("message", "Usuário cadastrado com sucesso");
-		dispatcher.forward(request, response);	
-
-	}
 	
-
-	private void homeCall(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+	
+	private void listUser(HttpServletRequest request, HttpServletResponse response) 
+			throws SQLException, ServletException, IOException{
+		List<User> users = userDAO.listUsers();
+		request.setAttribute("listUser", users);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(request.getServletPath() + "/admin-list-user.jsp");
+		
 		dispatcher.forward(request, response);
+		
 	}
 	
 
