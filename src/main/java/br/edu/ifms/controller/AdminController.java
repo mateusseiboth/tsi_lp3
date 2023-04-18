@@ -68,6 +68,9 @@ public class AdminController extends HttpServlet {
 			case "listar":
 				listUser(request, response);
 				break;
+			case "deletar":
+				deleteUser(request, response);
+				break;
 	
 			}
 			
@@ -85,6 +88,18 @@ public class AdminController extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(request.getServletPath() + "/admin-list-user.jsp");
 		
 		dispatcher.forward(request, response);
+		
+	}
+	
+	private void deleteUser(HttpServletRequest request, HttpServletResponse response) 
+			throws SQLException, ServletException, IOException{
+		long id = Long.parseLong(request.getParameter("id"));
+		User user = new User();
+		user.setId(id);
+		userDAO.removeUser(user);
+		String path = request.getContextPath() + request.getServletPath() + "?acao=listar";
+		response.sendRedirect(path);
+		
 		
 	}
 	
