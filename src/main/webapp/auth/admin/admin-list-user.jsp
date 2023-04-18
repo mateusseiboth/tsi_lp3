@@ -46,7 +46,7 @@
 								nome']}' data-cpf='{$cliente['
 								cpf']}' data-telefone='{$cliente['telefone']}''><fmt:message key="admin-list-usuario.botaoeditar"/>
 							</button>
-							<a href='$pathExcluir/{$cliente[' id']}' class='btn btn-danger'><fmt:message key="admin-list-usuario.botaoapagar"/></a>
+							<a href='${pageContext.request.contextPath}/auth/admin?acao=deletar&id=${user.id}' class='btn btn-danger'><fmt:message key="admin-list-usuario.botaoapagar"/></a>
 						</div>
 					</div>
 				</div>
