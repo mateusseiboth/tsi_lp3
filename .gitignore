@@ -2,6 +2,8 @@
 *.classpath
 bin/
 target/
+.settings/*
+/.settings/org.eclipse.wst.common.component
 /.settings/*
 .settings/*
 .settings/*.*
