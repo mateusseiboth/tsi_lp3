@@ -4,3 +4,9 @@ bin/
 target/
 .settings/*
 /.settings/org.eclipse.wst.common.component
+/.settings/*
+.settings/*
+.settings/*.*
+/.settings/org.eclipse.wst.common.component
+/.settings/org.eclipse.jdt.core.prefs
+/.settings/org.eclipse.wst.common.project.facet.core.xml
