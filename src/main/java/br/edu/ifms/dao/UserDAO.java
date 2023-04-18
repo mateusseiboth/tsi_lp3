@@ -89,6 +89,23 @@ public class UserDAO {
 			
 			return userList;
 		}
+		
+		public boolean removeUser(User user) throws SQLException {
+	        String sql = "DELETE FROM usuario where id = ?";
+	        
+	        connect();
+	         
+	        PreparedStatement statement = connection.prepareStatement(sql);
+	        statement.setLong(1, user.getId());
+	         
+	        boolean removedLine = statement.executeUpdate() > 0;
+	        statement.close();
+	        
+	        disconnect();
+	        
+	        return removedLine;     
+	   }
+
 
 
 }
