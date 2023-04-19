@@ -128,9 +128,9 @@ public class AdminController extends HttpServlet {
 		String login = request.getParameter("login");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		System.out.println(nasc);
 		
-		if (password == null) {
+		
+		if (password == "") {
 			Instant new_data = LocalDate.parse(nasc).atStartOfDay().toInstant(ZoneOffset.UTC);
 			Date real = Date.from(new_data);
 			
