@@ -16,6 +16,16 @@ public class User {
 	public User() {
 		super();
 	}
+	
+	public User(String name, String cpf, Date dataNasc, String email, String login, boolean active) {
+		super();
+		this.name = name;
+		this.cpf = cpf;
+		this.dataNasc = dataNasc;
+		this.email = email;
+		this.login = login;
+		this.active = active;
+	}
 
 	public User(String name, String cpf, Date dataNasc, String email, String password, String login, boolean active) {
 		super();

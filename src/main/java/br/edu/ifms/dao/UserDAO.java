@@ -62,7 +62,7 @@ public class UserDAO {
 		public List<User> listUsers() throws SQLException {
 			
 			List<User> userList = new ArrayList<User>();
-			String query = "select * from usuario";
+			String query = "select * from usuario order by id";
 			
 			connect();
 			
@@ -105,6 +105,68 @@ public class UserDAO {
 	        
 	        return removedLine;     
 	   }
+		
+		public boolean updateUser(User user) throws SQLException {
+	        String sql = "update usuario set ativo = NOT ativo where id = ?";
+	        
+	        connect();
+	         
+	        PreparedStatement statement = connection.prepareStatement(sql);
+	        statement.setLong(1, user.getId());
+	         
+	        boolean updatedLine = statement.executeUpdate() > 0;
+	        
+	        statement.close();
+	        
+	        disconnect();
+	        
+	        return updatedLine;     
+	   }
+		
+		public User editUserWithoutPass(User user) throws SQLException {
+			String sql = "update usuario set nome=?, cpf=?, data_nascimento=?, email=?, login=?"
+					+ " where id=?";		    
+			
+			connect();
+
+			PreparedStatement statement = connection.prepareStatement(sql);
+			statement.setString(1, user.getName());
+			statement.setString(2, user.getCpf());
+			long dataNumero = user.getDataNasc().getTime(); 
+			Date nascimento = new Date(dataNumero);
+			statement.setDate(3, nascimento);
+			statement.setString(4, user.getEmail());
+			statement.setString(5, user.getLogin());
+			statement.setLong(6, user.getId());
+			statement.executeUpdate();
+			disconnect();
+			
+			return user;
+	   }
+		
+		public User editUser(User user) throws SQLException {
+			String sql = "update usuario set nome=?, cpf=?, data_nascimento=?, email=?, login=?, password=?"
+					+ " where id=?";		    
+			
+			connect();
+
+			PreparedStatement statement = connection.prepareStatement(sql);
+			statement.setString(1, user.getName());
+			statement.setString(2, user.getCpf());
+			long dataNumero = user.getDataNasc().getTime(); 
+			Date nascimento = new Date(dataNumero);
+			statement.setDate(3, nascimento);
+			statement.setString(4, user.getEmail());
+			statement.setString(5, user.getLogin());
+			statement.setString(6, user.getPassword());
+			statement.setLong(7, user.getId());
+			statement.executeUpdate();
+			disconnect();
+			
+			return user;
+	   }
+
+
 
 
 
