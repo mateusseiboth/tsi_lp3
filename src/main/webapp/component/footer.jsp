@@ -12,9 +12,9 @@
 				class="nav col-md-4 justify-content-end list-unstyled d-flex text-muted">
 				<li class="ms-3"><span><fmt:message key="component-footer.group" /></span></li>
 				<li class="ms-3"><a class="text-muted"
-					href="https://github.com/mateusseiboth/tsi_jsp/"> <span>Github</span></a></li>
+					href="https://github.com/mateusseiboth/tsi_lp3" target="_blank"> <span><i class="bi bi-github"></i></span></a></li>
 				<li class="ms-3"><a class="text-muted"
-					href="https://br.linkedin.com/in/mateus-seiboth-586715168"> <span>Linkedin</span></a></li>
+					href="https://br.linkedin.com/in/mateus-seiboth-586715168" target="_blank"> <span><i class="bi bi-linkedin"></i></span></a></li>
 			</ul>
 		</footer>
 	</div>
