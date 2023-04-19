@@ -59,6 +59,7 @@
 						</div>
 						<div
 							class="card-footer border-0 bg-light p-2 d-flex justify-content-end">
+							<div class="btn-group" role="group">
 							<a name="btnEditar" id="btnEditar"
 							data-bs-toggle='modal' data-bs-target='#myModal' 
                 			data-id='${user.id}' 
@@ -76,6 +77,7 @@
 								class='btn btn-outline btn-link m-0 bg-danger text-reset text-decoration-none' role="button"
 								data-ripple-color="danger"> <i class="bi bi-trash"></i>
 							</a>
+							</div>
 						</div>
 					</div>
 				</div>
