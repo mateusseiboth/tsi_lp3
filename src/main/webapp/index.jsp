@@ -17,8 +17,10 @@
             background-size: cover;
             background-position: center;">
         <div class="container">
-          <h1 class="display-3">Bem-Vindo a pior página da rede local</h1>
-          <p>Por favor julgue o minimo possível esse design horrendo</p>
+          <h1 class="display-3"><fmt:message
+						key="index-titulo.principal" /></h1>
+          <p><fmt:message
+						key="index-titulo.abaixo" /></p>
           
         </div>
       </div>
@@ -27,18 +29,24 @@
         <div class="row">
         <hr>
           <div class="col-md-4">
-            <h2>Menus estáticos</h2>
-            <p>Todos os nossos menus são estáticos (inclusive o de notificações) pois nós sabemos apenas fingir</p>
+            <h2><fmt:message
+						key="index-corpo.direita.titulo" /></h2>
+            <p><fmt:message
+						key="index-corpo.direita.texto" /></p>
            
           </div>
           <div class="col-md-4">
-            <h2>Padrão de qualidade</h2>
-            <p>Seguimos sempre um padrão de qualidade duvidoso em nossos códigos pois nosso filosofia é: Se está fácil alguém pode copiar </p>
+            <h2><fmt:message
+						key="index-corpo.centro.titulo" /></h2>
+            <p><fmt:message
+						key="index-corpo.centro.texto" /></p>
             
           </div>
           <div class="col-md-4">
-            <h2>Cores não fucshia</h2>
-            <p>A documentação do bootstrap não tem uma cor fucshia por padrão e por conta disso talvez ela tenha sido adicionada na mão ou não.</p>
+            <h2><fmt:message
+						key="index-corpo.esquerda.titulo" /></h2>
+            <p><fmt:message
+						key="index-corpo.esquerda.texto" /></p>
            
           </div>
         </div>
