@@ -16,6 +16,7 @@
 	src="${pageContext.request.contextPath}/resources/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
 </head>
 
+<div style="margin-bottom: 50px">
 <nav class="navbar navbar-expand-lg navbar-dark bg-success">
 	<div class="container-fluid">
 		<a class="navbar-brand"
@@ -78,11 +79,11 @@
 			<!-- Icon -->
 			<div>
 
-				<a class="link-dark me-3" href="#"> </a> <a class="link-dark  me-3"
+				<a class="link-dark text-decoration-none me-3"
 					href="${pageContext.request.contextPath}/I18nController?language=pt_BR">
 					<i class="bi bi-translate"><fmt:message
 							key="component-nav.portugues" /></i>
-				</a> <a class="link-dark me-3"
+				</a> <a class="link-dark text-decoration-none me-3"
 					href="${pageContext.request.contextPath}/I18nController?language=en_US">
 					<i class="bi bi-translate"><fmt:message
 							key="component-nav.english" /></i>
@@ -99,23 +100,25 @@
 						<i class="bi bi-bell-fill"></i> <span
 						class="badge rounded-pill  bg-danger">2</span>
 					</a>
-					<ul class="dropdown-menu dropdown-menu-end"
+					<ul class="dropdown-menu dropdown-menu-end" style="width: 350px"
 						aria-labelledby="navbarDropdownMenuAvatar">
-						<li class="d-flex flex-row" style="margin-bottom: 15px">
-							<div class="d-flex " style="margin-right: 5px">
-								<h1 class="dropdown-item">Notificação 1</h1>
-								<button class="btn btn-sm btn-outline-danger">
-									<i class="bi bi-recycle"></i>
-								</button>
+						<li class="" style="margin-bottom: 15px; margin-left: 10px; margin-right: 10px">
+							<div class="alert alert-danger alert-dismissible fade show">
+							 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+								<p><b>Atraso na entrega de:</b></p>
+								<hr>
+								<p>"Flávião códigos vol 1"</p>
+								<hr>
 							</div>
 						</li>
 
-						<li class="d-flex flex-row" style="margin-bottom: 15px">
-							<div class="d-flex " style="margin-right: 5px">
-								<h1 class="dropdown-item">Notificação 2</h1>
-								<button class="btn btn-sm btn-outline-danger">
-									<i class="bi bi-recycle"></i>
-								</button>
+						<li class="" style="margin-bottom: 15px; margin-left: 10px; margin-right: 10px">
+							<div class="alert alert-danger alert-dismissible fade show">
+							 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+								<p><b>Atraso na entrega de:</b></p>
+								<hr>
+								<p>"Flávião códigos vol 2"</p>
+								<hr>
 							</div>
 						</li>
 
@@ -144,3 +147,4 @@
 		</div>
 	</div>
 </nav>
+</div>
