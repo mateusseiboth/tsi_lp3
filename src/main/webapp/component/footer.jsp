@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<div class="container fixed-bottom">
+<div class="container-fluid fixed-bottom">
 		<footer
 			class="d-flex flex-wrap justify-content-between align-items-center my-4 border-top">
 			<div class="col-md-4 d-flex align-items-center">
