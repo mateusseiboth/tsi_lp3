@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <head>
 <meta charset="UTF-8">
@@ -16,9 +16,15 @@
 	src="${pageContext.request.contextPath}/resources/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
 </head>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="${pageContext.request.contextPath}/public?acao=home">BiblioCraft</a>
+		<a class="navbar-brand"
+			href="${pageContext.request.contextPath}/public?acao=home">
+			<div class="row text-center">
+				<i class="bi bi-house-fill"></i>
+				<p>BiblioCraft</p>
+			</div>
+		</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 			data-bs-target="#navbarNav" aria-controls="navbarNav"
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -27,12 +33,44 @@
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
 				<li class="nav-item"><a class="nav-link active"
-					aria-current="page" href="#"><fmt:message key="component-nav.solicita"/></a></li>
-				<li class="nav-item"><a class="nav-link active" href="#"><fmt:message key="component-nav.acervo"/></a></li>
+					aria-current="page" href="#">
+						<div class="row text-center">
+							<i class="bi bi-journal-arrow-down"></i>
+							<p>
+								<fmt:message key="component-nav.solicita" />
+							</p>
+						</div>
+
+				</a></li>
+				<li class="nav-item"><a class="nav-link active" href="#">
+
+						<div class="row text-center">
+							<i class="bi bi-bookshelf"></i>
+							<p>
+								<fmt:message key="component-nav.acervo" />
+							</p>
+						</div>
+
+				</a></li>
 				<li class="nav-item"><a class="nav-link active"
-					href="${pageContext.request.contextPath}/public?acao=novo"><fmt:message key="component-nav.new"/></a></li>
-					<li class="nav-item"><a class="nav-link active"
-					href="${pageContext.request.contextPath}/auth/admin?acao=listar"><fmt:message key="component-nav.list"/></a></li>
+					href="${pageContext.request.contextPath}/public?acao=novo">
+						<div class="row text-center">
+							<i class="bi bi-person-add"></i>
+							<p>
+								<fmt:message key="component-nav.new" />
+							</p>
+						</div>
+				</a></li>
+				<li class="nav-item"><a class="nav-link active"
+					href="${pageContext.request.contextPath}/auth/admin?acao=listar">
+
+						<div class="row text-center">
+							<i class="bi bi-people"></i>
+							<p>
+								<fmt:message key="component-nav.list" />
+							</p>
+						</div>
+				</a></li>
 			</ul>
 		</div>
 
@@ -40,16 +78,16 @@
 			<!-- Icon -->
 			<div>
 
-				<a class="link-dark me-3" href="#"> <i class="bi bi-bookshelf"></i>
+				<a class="link-dark me-3" href="#"> </a> <a class="link-dark  me-3"
+					href="${pageContext.request.contextPath}/I18nController?language=pt_BR">
+					<i class="bi bi-translate"><fmt:message
+							key="component-nav.portugues" /></i>
+				</a> <a class="link-dark me-3"
+					href="${pageContext.request.contextPath}/I18nController?language=en_US">
+					<i class="bi bi-translate"><fmt:message
+							key="component-nav.english" /></i>
 				</a>
-				
-					<a class="nav-link" href="${pageContext.request.contextPath}/I18nController?language=pt_BR">
-						<fmt:message key="component-nav.portugues" />
-					</a>
-					<a class="nav-link" href="${pageContext.request.contextPath}/I18nController?language=en_US">
-						<fmt:message key="component-nav.english" />
-					</a>
-				
+
 			</div>
 			<div class="d-flex" style="margin-right: 15px">
 				<!-- Notifications -->
@@ -84,14 +122,13 @@
 					</ul>
 				</div>
 				<!-- Notifications -->
-				
+
 
 				<!-- Avatar -->
 				<div class="dropdown">
 					<a class="dropdown-toggle d-flex align-items-center hidden-arrow"
 						type="button" data-bs-toggle="dropdown" aria-expanded="false">
-						<img
-						src="https://media.licdn.com/dms/image/C4D03AQHjXGQ79Lgtqw/profile-displayphoto-shrink_200_200/0/1531820975689?e=1680739200&v=beta&t=FyZCcw2YCye_8iWWEopBHEDQJiywJHCqAIAI45-tWhw"
+						<img src="https://avatars.githubusercontent.com/u/14907837?v=4"
 						class="rounded-circle" height="25"
 						alt="Black and White Portrait of a Man" />
 					</a>
