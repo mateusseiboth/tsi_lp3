@@ -2,23 +2,18 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>BiblioCraft</title>
-</head>
-<body class="bg-dark" >
+
 	<jsp:include page="../../component/navbar.jsp" />
 
-	<div class="container-fluid border border-success text-white">
+	<div class="container-fluid bg-dark col-md-10 text-white" style="border-radius: 20px;">
 	
 		<div class="row">
-			<div class="col text-center">
+			<div class="col bg-success text-center" style="border-radius: 20px 20px 0px 0px; padding: 12px 12px">
 				<h2>
 					<fmt:message key="admin-list-usuario.lista" />
 				</h2>
 			</div>
+			<hr>
 		</div>
 		<div class="row text-black">
 			<c:forEach items="${listUser}" var="user">
@@ -108,6 +103,3 @@
     });
   });
 </script>
-
-</body>
-</html>
