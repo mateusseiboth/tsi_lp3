@@ -2,23 +2,18 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>BiblioCraft</title>
-</head>
-<body class="bg-dark" >
+
 	<jsp:include page="../../component/navbar.jsp" />
 
-	<div class="container-fluid border border-success text-white">
+	<div class="container-fluid bg-dark col-md-10 text-white" style="border-radius: 20px;">
 	
 		<div class="row">
-			<div class="col text-center">
+			<div class="col bg-success text-center" style="border-radius: 20px 20px 0px 0px; padding: 12px 12px">
 				<h2>
 					<fmt:message key="admin-list-usuario.lista" />
 				</h2>
 			</div>
+			<hr>
 		</div>
 		<div class="row text-black">
 			<c:forEach items="${listUser}" var="user">
@@ -32,7 +27,6 @@
 										class="rounded-circle" />
 									<div class="ms-3">
 										<p class="fw-bold mb-1">
-											<strong><fmt:message key="public-new-user.nome" />:</strong>
 											${user.name}
 										</p>
 										<p class="text-muted mb-0">
@@ -59,7 +53,8 @@
 							</div>
 						</div>
 						<div
-							class="card-footer border-0 bg-light p-2 d-flex justify-content-around">
+							class="card-footer border-0 bg-light p-2 d-flex justify-content-end">
+							<div class="btn-group" role="group">
 							<a name="btnEditar" id="btnEditar"
 							data-bs-toggle='modal' data-bs-target='#myModal' 
                 			data-id='${user.id}' 
@@ -68,15 +63,16 @@
                 			data-email='${user.email}'
                 			data-login='${user.login}'
                 			data-nascimento='${user.dataNasc}'
-								class='btn btn-editar btn-link m-0 bg-primary text-reset text-decoration-none' role="button"
+								class='btn btn-outline btn-editar btn-link m-0 bg-primary text-reset text-decoration-none' role="button"
 								data-ripple-color="danger"> <i class="bi bi-pencil"></i>
-							<fmt:message key="admin-list-usuario.botaoeditar" /></a>
+							</a>
 							
 							<a
 								href='${pageContext.request.contextPath}/auth/admin?acao=deletar&id=${user.id}'
-								class='btn btn-link m-0 bg-danger text-reset text-decoration-none' role="button"
+								class='btn btn-outline btn-link m-0 bg-danger text-reset text-decoration-none' role="button"
 								data-ripple-color="danger"> <i class="bi bi-trash"></i>
-							<fmt:message key="admin-list-usuario.botaoapagar" /></a>
+							</a>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -107,6 +103,3 @@
     });
   });
 </script>
-
-</body>
-</html>

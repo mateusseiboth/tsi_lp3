@@ -14,7 +14,24 @@
 	src="${pageContext.request.contextPath}/resources/jquery-3.6.0-dist/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
+	
 </head>
+
+<style>
+
+.alert {
+    position: relative;
+    padding: 0.5rem 0.5rem;
+    margin: 0.5rem;
+    /* border: 1px solid transparent; */
+    border-radius: 0.25rem;
+}
+
+</style>
+
+<body  style="background-image: url('${pageContext.request.contextPath}/resources/img/dark-theme.jpg');
+margin-bottom:90px;
+">
 
 <div style="margin-bottom: 50px">
 <nav class="navbar navbar-expand-lg navbar-dark bg-success">
@@ -100,7 +117,7 @@
 						<i class="bi bi-bell-fill"></i> <span
 						class="badge rounded-pill  bg-danger">2</span>
 					</a>
-					<ul class="dropdown-menu dropdown-menu-end" style="width: 350px"
+					<ul class="dropdown-menu dropdown-menu-end bg-success bg-gradient" style="width: 350px"
 						aria-labelledby="navbarDropdownMenuAvatar">
 						<li class="" style="margin-bottom: 15px; margin-left: 10px; margin-right: 10px">
 							<div class="alert alert-danger alert-dismissible fade show">
@@ -148,3 +165,5 @@
 	</div>
 </nav>
 </div>
+
+
