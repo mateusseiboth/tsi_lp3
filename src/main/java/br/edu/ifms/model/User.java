@@ -104,4 +104,18 @@ public class User {
 		this.active = active;
 	}
 
+	public List<Roles> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Roles> roles) {
+		this.roles = roles;
+	}
+
+	public User(List<Roles> roles) {
+		super();
+		this.roles = roles;
+	}
+	
+
 }
