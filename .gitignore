@@ -1,7 +1,10 @@
 /target/
 *.classpath
-bin/
+bin/*
+bin
+/bin
 target/
+./bin
 .settings/*
 /.settings/org.eclipse.wst.common.component
 /.settings/*
