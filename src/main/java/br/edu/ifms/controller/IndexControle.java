@@ -1,7 +1,7 @@
 package br.edu.ifms.controller;
 
 import java.io.IOException;
-
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Date;
@@ -17,6 +17,7 @@ import br.edu.ifms.controller.util.DataModelling;
 import br.edu.ifms.dao.UserDAO;
 import br.edu.ifms.dao.util.Connect;
 import br.edu.ifms.model.User;
+import br.edu.ifms.security.Crypt;
 
 /**
  * Servlet implementation class IndexControle
@@ -88,18 +89,20 @@ public class IndexControle extends HttpServlet {
 	}
 
 	private void insertUser(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException, SQLException {
+			throws ServletException, IOException, SQLException, NoSuchAlgorithmException {
 		String name = request.getParameter("nome");
 		String cpf = request.getParameter("cpf");
 		String nasc = request.getParameter("nascimento");
 		String login = request.getParameter("login");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+		
+		String cryptPass = Crypt.convertMD5(password);
 
 		DataModelling dataMan = new DataModelling();
 		Date new_data = dataMan.converterStringData(nasc);
 
-		User user = new User(name, cpf, new_data, email, password, login, true);
+		User user = new User(name, cpf, new_data, email, cryptPass, login, false);
 		
 		User finalUser = userDAO.insertUser(user);
 		
