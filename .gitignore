@@ -1,3 +1,4 @@
+/bin/src/main/webapp/resources/*
 /target/
 *.classpath
 bin/*
