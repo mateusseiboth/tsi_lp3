@@ -1,6 +1,7 @@
 package br.edu.ifms.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class User {
 
@@ -12,6 +13,7 @@ public class User {
 	private String password;
 	private String login;
 	private boolean active;
+	private List<Roles> roles;
 	
 	public User() {
 		super();
@@ -101,5 +103,19 @@ public class User {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
+
+	public List<Roles> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Roles> roles) {
+		this.roles = roles;
+	}
+
+	public User(List<Roles> roles) {
+		super();
+		this.roles = roles;
+	}
+	
 
 }
