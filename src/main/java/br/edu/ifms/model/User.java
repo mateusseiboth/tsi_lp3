@@ -1,6 +1,7 @@
 package br.edu.ifms.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class User {
 
@@ -12,6 +13,7 @@ public class User {
 	private String password;
 	private String login;
 	private boolean active;
+	private List<Roles> roles;
 	
 	public User() {
 		super();
