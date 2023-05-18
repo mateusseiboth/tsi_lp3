@@ -1,6 +1,7 @@
 package br.edu.ifms.dao;
 
 import java.sql.Connection;
+import br.edu.ifms.dao.RolesDAO;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,6 +14,8 @@ import br.edu.ifms.model.*;
 import br.edu.ifms.dao.util.Connect;
 
 public class UserDAO {
+	
+	RolesDAO rolesDAO = new RolesDAO();
 	
 	private Connection connection;
 	
@@ -81,7 +84,11 @@ public class UserDAO {
 				
 				User user = new User(name, cpf, birthday, email, password, login, active);
 				user.setId(id);
+				
+				List <Roles> rolesList = rolesDAO.searchRoleByUser(user);
+				user.setRoles(rolesList);
 				userList.add(user);
+				System.out.println(user.getRoles());
 			}
 			result.close();
 			disconnect();
