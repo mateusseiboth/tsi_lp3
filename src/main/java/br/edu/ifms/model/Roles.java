@@ -21,6 +21,13 @@ public class Roles {
 		this.typeRole = typeRole;
 		this.users = users;
 	}
+	
+	public Roles(Long id, String typeRole) {
+		super();
+		this.id = id;
+		this.typeRole = typeRole;
+	}
+
 
 	public Long getId() {
 		return id;

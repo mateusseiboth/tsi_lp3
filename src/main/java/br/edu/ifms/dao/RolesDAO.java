@@ -25,22 +25,24 @@ public class RolesDAO {
 		}
 	}
 	
-	public Roles buscarRolesPorTipo(String tipo) throws SQLException {
-        Roles papel = null;
+	public Roles searchRoleType(String type) throws SQLException {
+		System.out.println("Chegada na funcao");
+        Roles roles = null;
+        System.out.println(type);
         String sql = "SELECT * FROM papel WHERE tipo_papel LIKE ?";
          
         connect();
          
         PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setString(1, tipo);
+        statement.setString(1, type);
          
         ResultSet resultSet = statement.executeQuery();
          
         if (resultSet.next()) {
         	long id = resultSet.getLong("id");
-        	String tipoRoles = resultSet.getString("tipo_papel");
+        	String roleType = resultSet.getString("tipo_papel");
 
-			papel = new Roles(id, tipoRoles);
+        	roles = new Roles(id, roleType);
 		}
          
         resultSet.close();
@@ -48,18 +50,18 @@ public class RolesDAO {
         
         disconnect();
         
-        return papel;
+        return roles;
     }
 	
-	public void atribuirRolesUsuario(Roles papel, User usuario) throws SQLException{
+	public void linkRoleUser(Roles role, User user) throws SQLException{
 		String sql = "INSERT INTO usuario_papel (usuario_id, papel_id)"
 				+ " VALUES (?, ?)";		    
 		
 		connect();
 
 		PreparedStatement statement = connection.prepareStatement(sql);
-		statement.setLong(1, usuario.getId());
-		statement.setLong(2, papel.getId());
+		statement.setLong(1, user.getId());
+		statement.setLong(2, role.getId());
 		
 		statement.executeUpdate();
 		statement.close();
