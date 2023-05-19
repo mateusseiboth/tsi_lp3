@@ -31,7 +31,7 @@ public class RolesDAO {
 	public List<Roles> listAll() throws SQLException {
 		List<Roles> rolesList = new ArrayList<Roles>();
         Roles roles = null;
-        String sql = "SELECT * from papel";
+        String sql = "SELECT * from papel order by id";
          
         connect();
          
@@ -39,7 +39,7 @@ public class RolesDAO {
          
         ResultSet resultSet = statement.executeQuery();
          
-        if (resultSet.next()) {
+        while (resultSet.next()) {
         	long roleId = resultSet.getLong("id");
         	String roleType = resultSet.getString("tipo_papel");
 

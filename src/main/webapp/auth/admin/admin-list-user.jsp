@@ -77,7 +77,8 @@
 								class="bi bi-trash"></i>
 							</a> <a name="btnRoles" data-bs-toggle="modal"
 								data-bs-target="#myModalBox"
-								class='btn btn-outline btn-link m-0 bg-danger text-reset text-decoration-none'
+							
+								class='btn btn-outline btn-link m-0 bg-primary text-reset text-decoration-none'
 								role="button" data-ripple-color="danger"> <i
 								class="bi bi-briefcase"></i>
 							</a>
@@ -91,7 +92,7 @@
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title">Modal com checkbox</h5>
+						<h5 class="modal-title">Alterar Cargo</h5>
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close"></button>
 					</div>
