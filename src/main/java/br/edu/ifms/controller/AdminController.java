@@ -78,6 +78,10 @@ public class AdminController extends HttpServlet {
 			case "editar":
 				editUser(request, response);
 				break;
+			case "changeRole":
+				System.out.println("Em update");
+				updateUserRole(request, response);
+				break;
 	
 			}
 			
@@ -120,6 +124,20 @@ public class AdminController extends HttpServlet {
 		User user = new User();
 		user.setId(id);
 		userDAO.updateUser(user);
+		String path = request.getContextPath() + request.getServletPath() + "?acao=listar";
+		response.sendRedirect(path);
+		
+		
+	}
+	
+	private void updateUserRole(HttpServletRequest request, HttpServletResponse response) 
+			throws SQLException, ServletException, IOException{
+		long id = Long.parseLong(request.getParameter("idUpdate"));
+		String[] roles = request.getParameterValues("checkboxRole");
+		System.out.println(roles);
+//		User user = new User();
+//		user.setId(id);
+//		userDAO.updateUser(user);
 		String path = request.getContextPath() + request.getServletPath() + "?acao=listar";
 		response.sendRedirect(path);
 		

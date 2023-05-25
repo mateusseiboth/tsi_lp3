@@ -76,8 +76,8 @@
 								role="button" data-ripple-color="danger"> <i
 								class="bi bi-trash"></i>
 							</a> <a name="btnRoles" data-bs-toggle="modal"
-								data-bs-target="#myModalBox"
-							
+								data-bs-target="#myModalBox" data-idUpdate="${user.id}"
+								data-nome='<c:forEach items="${user.roles}" var="role">${role.id},</c:forEach>'
 								class='btn btn-outline btn-link m-0 bg-primary text-reset text-decoration-none'
 								role="button" data-ripple-color="danger"> <i
 								class="bi bi-briefcase"></i>
@@ -90,27 +90,35 @@
 		<div class="modal fade" id="myModalBox" tabindex="-1" role="dialog"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">Alterar Cargo</h5>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close"></button>
+				<form
+					method="POST"
+					action="${pageContext.request.contextPath}/auth/admin?acao=changeRole">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Alterar Cargo</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+
+						<div class="modal-body">
+
+							<input type="hidden" name="idUpdate" value="" />
+							<c:forEach items="${listRoles}" var="listRoles">
+								<label> <input type="checkbox" value="${listRoles.id}"
+									name="checkboxRole" id="myModalCheckbox">
+									${listRoles.typeRole}
+								</label>
+							</c:forEach>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Fechar</button>
+							<button type="submit" class="btn btn-primary" id="myModalConfirm">Confirmar</button>
+						</div>
 					</div>
-					<div class="modal-body">
-						<c:forEach items="${listRoles}" var="listRoles">
-							<label> <input type="checkbox" value="${listRoles.id}" name="checkbox" id="myModalCheckbox">
-								${listRoles.typeRole}
-							</label>			
-						</c:forEach>
-						
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal">Fechar</button>
-						<button type="button" class="btn btn-primary" id="myModalConfirm">Confirmar</button>
-					</div>
-				</div>
+				</form>
 			</div>
+
 		</div>
 	</div>
 </div>
@@ -119,6 +127,29 @@
 
 <jsp:include page="/component/footer.jsp" />
 <jsp:include page="/component/modalUser.jsp" />
+
+<script>
+    const btnRoles = document.querySelectorAll('[name="btnRoles"]');
+    const inputIdUpdate = document.querySelector('input[name=idUpdate]');
+   
+    
+    
+    btnRoles.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const checkboxes = document.querySelectorAll('#myModalBox input[type="checkbox"]');
+            const userRoles = btn.dataset.nome.split(',');
+            console.log(btn.dataset.idupdate);
+            inputIdUpdate.value = btn.dataset.idupdate
+            checkboxes.forEach(checkbox => {
+                if (userRoles.includes(checkbox.value)) {
+                    checkbox.checked = true;
+                } else {
+                    checkbox.checked = false;
+                }
+            });
+        });
+    });
+</script>
 
 
 <script>
