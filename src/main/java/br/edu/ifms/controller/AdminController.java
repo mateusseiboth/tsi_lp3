@@ -12,7 +12,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import br.edu.ifms.dao.RolesDAO;
 import br.edu.ifms.dao.UserDAO;
+import br.edu.ifms.model.Roles;
 import br.edu.ifms.model.User;
 
 /**
@@ -22,6 +25,7 @@ import br.edu.ifms.model.User;
 public class AdminController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserDAO userDAO;
+	private RolesDAO rolesDAO;
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -34,6 +38,7 @@ public class AdminController extends HttpServlet {
 	public void init(){
 		// TODO Auto-generated method stub
 		userDAO = new UserDAO();
+		rolesDAO = new RolesDAO();
 	}
 
 	/**
@@ -73,6 +78,10 @@ public class AdminController extends HttpServlet {
 			case "editar":
 				editUser(request, response);
 				break;
+			case "changeRole":
+				System.out.println("Em update");
+				updateUserRole(request, response);
+				break;
 	
 			}
 			
@@ -86,7 +95,10 @@ public class AdminController extends HttpServlet {
 	private void listUser(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, ServletException, IOException{
 		List<User> users = userDAO.listUsers();
+		List<Roles> roles = rolesDAO.listAll();
+		
 		request.setAttribute("listUser", users);
+		request.setAttribute("listRoles", roles);
 		RequestDispatcher dispatcher = request.getRequestDispatcher(request.getServletPath() + "/admin-list-user.jsp");
 		
 		dispatcher.forward(request, response);
@@ -112,6 +124,20 @@ public class AdminController extends HttpServlet {
 		User user = new User();
 		user.setId(id);
 		userDAO.updateUser(user);
+		String path = request.getContextPath() + request.getServletPath() + "?acao=listar";
+		response.sendRedirect(path);
+		
+		
+	}
+	
+	private void updateUserRole(HttpServletRequest request, HttpServletResponse response) 
+			throws SQLException, ServletException, IOException{
+		long id = Long.parseLong(request.getParameter("idUpdate"));
+		String[] roles = request.getParameterValues("checkboxRole");
+		System.out.println(roles);
+//		User user = new User();
+//		user.setId(id);
+//		userDAO.updateUser(user);
 		String path = request.getContextPath() + request.getServletPath() + "?acao=listar";
 		response.sendRedirect(path);
 		

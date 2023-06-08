@@ -1,6 +1,7 @@
 package br.edu.ifms.dao;
 
 import java.sql.Connection;
+import br.edu.ifms.dao.RolesDAO;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,6 +14,8 @@ import br.edu.ifms.model.*;
 import br.edu.ifms.dao.util.Connect;
 
 public class UserDAO {
+	
+	RolesDAO rolesDAO = new RolesDAO();
 	
 	private Connection connection;
 	
@@ -81,7 +84,11 @@ public class UserDAO {
 				
 				User user = new User(name, cpf, birthday, email, password, login, active);
 				user.setId(id);
+				
+				List <Roles> rolesList = rolesDAO.searchRoleByUser(user);
+				user.setRoles(rolesList);
 				userList.add(user);
+				System.out.println(user.getRoles());
 			}
 			result.close();
 			disconnect();
@@ -168,6 +175,43 @@ public class UserDAO {
 
 
 
+		public User searchUsername(String login) throws SQLException{
+			User user = new User();
+			RolesDAO papelDAO = new RolesDAO();
+	        User usuario = null;
+	        String sql = "SELECT * FROM usuario WHERE login = ?";
+	         
+	        connect();
+	         
+	        PreparedStatement statement = connection.prepareStatement(sql);
+	        statement.setString(1, login);
+	         
+	        ResultSet resultSet = statement.executeQuery();
+	         
+	        if (resultSet.next()) {
+	        	long id = resultSet.getLong("id");
+	        	String nome = resultSet.getString("nome");
+				String cpf = resultSet.getString("cpf");
+				Date nascimento = new Date(resultSet.getDate("data_nascimento").getTime());
+				String email = resultSet.getString("email");
+				String password = resultSet.getString("password");
+				boolean ativo = resultSet.getBoolean("ativo");
+
+				usuario = new User(nome, cpf, nascimento, email, password, login, ativo);
+				usuario.setId(id);			
+				List<Roles> papeisUsuario = papelDAO.searchRoleByUser(usuario);
+				usuario.setRoles(papeisUsuario);
+			}
+	         
+	        resultSet.close();
+	        statement.close();
+	        
+	        disconnect();
+	       
+			return usuario;
+			
+		}
+		
 
 
 }

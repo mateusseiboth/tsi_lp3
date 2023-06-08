@@ -1,6 +1,7 @@
 package br.edu.ifms.controller;
 
 import java.io.IOException;
+
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -14,8 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.edu.ifms.controller.util.DataModelling;
+import br.edu.ifms.dao.RolesDAO;
 import br.edu.ifms.dao.UserDAO;
 import br.edu.ifms.dao.util.Connect;
+import br.edu.ifms.model.Roles;
 import br.edu.ifms.model.User;
 import br.edu.ifms.security.Crypt;
 
@@ -26,6 +29,10 @@ import br.edu.ifms.security.Crypt;
 public class IndexControle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserDAO userDAO;
+	private RolesDAO rolesDAO;
+
+
+
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -33,11 +40,12 @@ public class IndexControle extends HttpServlet {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	@Override
-	public void init(){
+	public void init() {
 		// TODO Auto-generated method stub
 		userDAO = new UserDAO();
+		rolesDAO = new RolesDAO();
 	}
 
 	/**
@@ -74,7 +82,7 @@ public class IndexControle extends HttpServlet {
 			case "home":
 				homeCall(request, response);
 			}
-			
+
 		} catch (Exception ex) {
 			throw new ServletException(ex);
 		}
@@ -96,28 +104,31 @@ public class IndexControle extends HttpServlet {
 		String login = request.getParameter("login");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		
+
 		String cryptPass = Crypt.convertMD5(password);
 
 		DataModelling dataMan = new DataModelling();
 		Date new_data = dataMan.converterStringData(nasc);
 
 		User user = new User(name, cpf, new_data, email, cryptPass, login, false);
-		
+
 		User finalUser = userDAO.insertUser(user);
+		System.out.println("Chamando rolesDAO");
 		
+		Roles role = rolesDAO.searchRoleType("USER");
+
+		rolesDAO.linkRoleUser(role, finalUser);
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("public/public-newuser.jsp");
 		request.setAttribute("message", "Usuário cadastrado com sucesso");
-		dispatcher.forward(request, response);	
+		dispatcher.forward(request, response);
 
 	}
-	
 
 	private void homeCall(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 		dispatcher.forward(request, response);
 	}
-	
 
 }
