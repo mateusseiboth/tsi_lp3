@@ -175,6 +175,14 @@ public class UserDAO {
 
 
 
+		public User searchUsername(String login) throws SQLException{
+			User user = new User();
+			 //toDo
+			
+			return user;
+			
+		}
+		
 
 
 }

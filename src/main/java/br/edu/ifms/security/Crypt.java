@@ -16,6 +16,13 @@ public class Crypt {
 		return result;
 	}
 	
+	public static boolean passwordCheck(String password, String databasePassword) throws NoSuchAlgorithmException {
+	    String result = convertMD5(password);
+	    boolean isTheSame = result.equals(databasePassword);	   
+		return isTheSame;
+	}
+
+	
 }
 
 
