@@ -18,12 +18,5 @@ public class UserDetails {
 		return user.getName();
 	}
 	
-	public User getUsuario() {
-		return user;
-	}
-
-	public void setUsuario(User user) {
-		this.user = user;
-	}
 
 }
