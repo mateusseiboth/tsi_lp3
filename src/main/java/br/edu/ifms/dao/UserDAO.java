@@ -177,9 +177,38 @@ public class UserDAO {
 
 		public User searchUsername(String login) throws SQLException{
 			User user = new User();
-			 //toDo
-			
-			return user;
+			RolesDAO papelDAO = new RolesDAO();
+	        User usuario = null;
+	        String sql = "SELECT * FROM usuario WHERE login = ?";
+	         
+	        connect();
+	         
+	        PreparedStatement statement = connection.prepareStatement(sql);
+	        statement.setString(1, login);
+	         
+	        ResultSet resultSet = statement.executeQuery();
+	         
+	        if (resultSet.next()) {
+	        	long id = resultSet.getLong("id");
+	        	String nome = resultSet.getString("nome");
+				String cpf = resultSet.getString("cpf");
+				Date nascimento = new Date(resultSet.getDate("data_nascimento").getTime());
+				String email = resultSet.getString("email");
+				String password = resultSet.getString("password");
+				boolean ativo = resultSet.getBoolean("ativo");
+
+				usuario = new User(nome, cpf, nascimento, email, password, login, ativo);
+				usuario.setId(id);			
+				List<Roles> papeisUsuario = papelDAO.searchRoleByUser(usuario);
+				usuario.setRoles(papeisUsuario);
+			}
+	         
+	        resultSet.close();
+	        statement.close();
+	        
+	        disconnect();
+	       
+			return usuario;
 			
 		}
 		

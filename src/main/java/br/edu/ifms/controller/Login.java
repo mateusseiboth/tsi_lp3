@@ -83,17 +83,17 @@ public class Login extends HttpServlet {
 				
 				HttpSession session = request.getSession();
 				session.setAttribute("usuarioLogado", detalheUsuario);
-				path = "publica/publica-logado.jsp";
+				path = "index.jsp";
 				
 			} else { // senha inválida ou não ativo
 				path = "public/login.jsp";				
 				//String texto = I18nUtil.getMensagem(locale, "publica-login-invalido");
-				request.setAttribute("mensagem", "Texto variavel aqui");
+				request.setAttribute("mensagem", "Invalid username or password");
 			}
 		} else {
 			path = "public/login.jsp";
 			//String texto = I18nUtil.getMensagem(locale, "publica-login-invalido");
-			request.setAttribute("mensagem", "Texto variavel aqui");			
+			request.setAttribute("mensagem", "Invalid username or password");			
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
